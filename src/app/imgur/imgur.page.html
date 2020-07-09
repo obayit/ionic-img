@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Imgur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)" (keyup.enter)="goSubreddit()"
+  (click)="clickSearchBar()" (focusout)="outFocusSearchBar()" [(ngModel)]="subreddit"></ion-searchbar>
+  <ion-list *ngIf="showSubredditList">
+    <ion-item *ngFor="let item of subredditList" (click)="onSubredditClick($event)"
+    [ngClass]="{'nsfw-subreddit' : item.nsfw}">
+      {{item.subreddit}}
+    </ion-item>
+  </ion-list>
+
+
+  <ion-grid *ngIf="response">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+
+          <div *ngFor="let item of response" routerLink="/imgur-image-details" [state]="item">
+            <ion-card>
+              <ion-img [src]="item.linkThumbnail" class="img-thumbnail" zooming="true"
+              (ionError)="onIonError()">
+              <!-- alt="lolcat"
+              (ionImgWillLoad)="onIonImgWillLoad()"
+              (ionImgDidLoad)="onIonImgDidLoad()" -->
+              </ion-img>
+              <!-- <img [src]="item.linkThumbnail"/> -->
+              <ion-card-content>
+                <ion-card-title>
+                {{ item.title }}
+                </ion-card-title>
+                <p>{{ item.type }}</p>
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Imgur Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="floating">Search</ion-label>
+    <ion-input (keyup.enter)="goSearch()" [(ngModel)]="query"></ion-input>
+  </ion-item>
+  <ion-virtual-scroll [items]="items" approxItemHeight="550px">
+    <ion-card *virtualItem="let item; let itemBounds = bounds;" class="imgur-img">
+      <div *ngIf="item.is_album">
+        <p>{{item.images[0].height}}</p>
+        <ion-img [src]="item.images[0].linkThumbnail" [alt]="item.title"></ion-img>
+      </div>
+      <div *ngIf="!item.is_album">
+        <p>{{item.height}}</p>
+        <ion-img [src]="item.linkThumbnail" [alt]="item.title"></ion-img>
+      </div>
+      <ion-card-content>{{item.title}}</ion-card-content>
+    </ion-card>
+  </ion-virtual-scroll>
+  <!-- <ion-list *ngIf="showSubredditList">
+    <ion-item *ngFor="let item of subredditList" (click)="onSubredditClick($event)"
+    [ngClass]="{'nsfw-subreddit' : item.nsfw}">
+      {{item.subreddit}}
+    </ion-item>
+  </ion-list> -->
+</ion-content>
