@@ -6,15 +6,32 @@
 
 <ion-content padding>
 
-<div *ngIf="item.type==='video/mp4'">
-    <video controls (click)="toggleVideo()" #videoPlayer class="video">
-        <source src="{{item.link}}" type="video/mp4" />
-        Browser not supported
-    </video>
-</div>
+  <!-- <ion-virtual-scroll *ngIf="item.images" [items]="item.images" approxItemHeight="500px"> -->
+  <ion-list>
+    <ion-grid>
+      <ion-row *ngFor="let image of item.images">
+        <ion-col>
+        <div *ngIf="image.type==='video/mp4'">
+            <video controls (click)="toggleVideo()" #videoPlayer class="video"
+            poster="{{image.linkHugeThumbnail}}">
+                <source src="{{image.link}}" type="video/mp4" />
+                Browser not supported
+            </video>
+        </div>
+        <ion-img *ngIf="image.type!='video/mp4'" [src]="image.link" (click)="onImageClick($event)"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <!-- tags -->
+  <div class="tags-container">
+    <div class="tag-item" *ngFor="let tag of item.tags">
+      <ion-chip>
+        <ion-label [style.background-image]="getTagImage(tag)">{{tag.display_name}}</ion-label>
+      </ion-chip>
+    </div>
+  </div>
 
-
-  <ion-img *ngIf="item.type!='video/mp4'" [src]="item.link" (click)="onImageClick($event)"></ion-img>
   <p>{{ item.title }}</p>
 
 </ion-content>

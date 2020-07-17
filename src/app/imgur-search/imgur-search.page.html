@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Imgur Search</ion-title>
+    <ion-icon slot="start" name="search-outline"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -10,17 +11,33 @@
     <ion-input (keyup.enter)="goSearch()" [(ngModel)]="query"></ion-input>
   </ion-item>
 
-  <ion-virtual-scroll [items]="items" approxItemHeight="580px">
+  <ion-virtual-scroll [items]="items" approxItemHeight="600px">
     <div class="item-container" *virtualItem="let item; let itemBounds = bounds;">
-      <!-- <div class="imgur-item">
-        <div class="imgur-item-header">
-          <ion-card-title>{{ item.title }}</ion-card-title>
-        </div> -->
-        <!-- <ion-img class="imgur-image" [src]="item.linkMedium" [alt]="item.name"></ion-img> -->
-        <div class="imgur-item-header">{{item.title}}</div>
-        <img class="fillheight" src="{{item.linkHugeThumbnail}}" alt="{{item.name}}"/>
-      <!-- </div> -->
+      <ion-text color="primary"><p class="item-text" text-wrap>{{item.title}}</p></ion-text>
+      <ion-img class="item-image fill-height" src="{{item.linkHugeThumbnail}}" alt="{{item.name}}"
+       routerLink="/imgur-image-details/" [queryParams]="{hash: item.id}" [state]="item"></ion-img>
+
+      <ion-grid class="item-info">
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col>
+            <ion-button color="primary">
+              <ion-icon slot="start" name='arrow-up-circle-outline'></ion-icon>
+              {{item.points}} Points
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="primary">
+            <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
+              {{item.comment_count}} Comments
+            </ion-button>
+          </ion-col>
+          <ion-col class="item-images-count">
+            <ion-note>
+              {{item.images_count}} {{item.images_count > 1 ? 'Images': 'Image'}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
   </ion-virtual-scroll>
 </ion-content>
-

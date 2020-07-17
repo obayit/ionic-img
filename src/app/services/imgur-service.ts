@@ -31,4 +31,8 @@ export class ImgurService {
     return this.http.get(`https://api.imgur.com/3/gallery/search/${sort}/${window}/${page}?q=${query}`,
      {headers: this.headers});
   }
+  getGalary(hash: string){
+    return this.http.get(`https://api.imgur.com/3/galary/album/${hash}`,
+     {headers: this.headers});
+  }
 }
