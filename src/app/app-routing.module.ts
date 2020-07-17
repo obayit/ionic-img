@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'imgur-search',
     loadChildren: () => import('./imgur-search/imgur-search.module').then( m => m.ImgurSearchPageModule)
   },
+  {
+    path: 'css-tutorial',
+    loadChildren: () => import('./css-tutorial/css-tutorial.module').then( m => m.CssTutorialPageModule)
+  },
+  {
+    path: 'imgur-flex',
+    loadChildren: () => import('./imgur-flex/imgur-flex.module').then( m => m.ImgurFlexPageModule)
+  },
 ];
 
 @NgModule({

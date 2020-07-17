@@ -1,6 +1,31 @@
-ion-card{
-    max-height: 580px !important;
+ion-virtual-scroll ion-item{
+    height: 580px;
+    max-height: 580px;
+    min-height: 580px;
 }
-ion-img{
-    max-height: 480px;
+.imgur-item{
+    min-height: 100%;
+    min-width: 100%;
+    border: 1px solid;
+}
+.imgur-item-header{
+    min-width: 100%;
+    height: auto;
+}
+
+
+
+.item-container{
+    height: 580px;
+    max-height: 580px;
+    min-height: 580px;
+    border: 1px solid white;
+}
+.fillheight{
+    max-height: 540px;
+    min-height: 100%; 
+    width: auto;
+    border: 1px solid red;
+    object-fit: contain;
+    padding: 20px;
 }

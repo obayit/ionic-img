@@ -22,6 +22,7 @@ export interface ImgurSearchResponse{
   linkHugeThumbnail?: string, // h = Huge Thumbnail (1024x1024)
   is_album?: boolean,
   height?: number;
+  cover?: string;
   images?: [{
     link?: string;
     linkSmall?: string, //  s = Small Square (90x90)
@@ -31,4 +32,16 @@ export interface ImgurSearchResponse{
     linkLarge?: string, // l = Large Thumbnail (640x640)
     linkHugeThumbnail?: string, // h = Huge Thumbnail (1024x1024)
   }]
+}
+
+export function generateLinks(item: any){
+  if(item.is_album){
+    item.link = 'https://i.imgur.com/' + item.cover + '.jpg'
+  }
+  item.link = item.link.replace('h.', '.');
+  let dotLocation = item.link.indexOf('.', 19);
+  item.linkSmall = item.link.substring(0, dotLocation) + 's' + item.link.substring(dotLocation);
+  item.linkThumbnail = item.link.substring(0, dotLocation) + 't' + item.link.substring(dotLocation);
+  item.linkMedium = item.link.substring(0, dotLocation) + 'm' + item.link.substring(dotLocation);
+  item.linkHugeThumbnail = item.link.substring(0, dotLocation) + 'h' + item.link.substring(dotLocation);
 }

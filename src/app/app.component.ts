@@ -21,6 +21,11 @@ export class AppComponent {
       url: '/imgur-search',
       icon: 'star'
     },
+    {
+      title: 'Imgur Flex',
+      url: '/imgur-flex',
+      icon: 'apps-outline'
+    },
   ]
   constructor(
     private platform: Platform,

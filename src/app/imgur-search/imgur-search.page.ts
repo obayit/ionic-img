@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImgurService } from '../services/imgur-service';
-import { ImgurSearchResponse as ImgurSearchResponse } from '../interfaces'
+import { ImgurSearchResponse, generateLinks } from '../interfaces'
 
 @Component({
   selector: 'app-imgur-search',
@@ -10,20 +10,13 @@ import { ImgurSearchResponse as ImgurSearchResponse } from '../interfaces'
 export class ImgurSearchPage implements OnInit {
   query: string = 'cats';
   items: ImgurSearchResponse[] = [];
-
+  // items: any[] = [];
   constructor(private imgurService: ImgurService) { }
 
   ngOnInit() {
     this.goSearch();
   }
   clickSearchBar(){
-  }
-  generateLinks(item: any){
-    item.link = item.link.replace('h.', '.');
-    let dotLocation = item.link.indexOf('.', 19);
-    item.linkSmall = item.link.substring(0, dotLocation) + 's' + item.link.substring(dotLocation);
-    item.linkMedium = item.link.substring(0, dotLocation) + 'm' + item.link.substring(dotLocation);
-    item.linkThumbnail = item.link.substring(0, dotLocation) + 't' + item.link.substring(dotLocation);
   }
   goSearch(){
     if(!this.query){
@@ -32,13 +25,7 @@ export class ImgurSearchPage implements OnInit {
     this.imgurService.getSearchResult(this.query).subscribe((result: {data: ImgurSearchResponse[]})=>{
       let res: ImgurSearchResponse[] = [];
       for(let item of result.data){
-        if(item.is_album){
-          for(let image of item.images){
-            this.generateLinks(image);
-          }
-        }else{
-          this.generateLinks(item);
-        }
+        generateLinks(item);
         res.push(item);
       }
       this.items = res;
@@ -46,9 +33,46 @@ export class ImgurSearchPage implements OnInit {
     });
   }
 }
-//https://i.imgur.com/CX7nr3lt.gif //# not working
-//http://i.imgur.com/CX7nr3lht.gif //# notworking
-//https://i.imgur.com/CX7nr3lht.gif //# was not notworking missing s
-//https://i.imgur.com/CX7nr3lt.gif //# working
-//https://i.imgur.com/CX7nr3lht.gif
-//https://i.imgur.com/CX7nr3lht.gif
+//   constructor() {
+//     for (let i = 0; i < 1000; i++) {
+//       this.items.push({
+//         name: i + ' - ' + images[rotateImg],
+//         imgSrc: getImgSrc(),
+//         avatarSrc: getImgSrc(),
+//         imgHeight: Math.floor(Math.random() * 50 + 150),
+//         content: lorem.substring(0, Math.random() * (lorem.length - 100) + 100)
+//       });
+
+//       rotateImg++;
+//       if (rotateImg === images.length) {
+//         rotateImg = 0;
+//       }
+//     }
+//   }
+// }
+
+// const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+// const images = [
+//   'bandit',
+//   'batmobile',
+//   'blues-brothers',
+//   'bueller',
+//   'delorean',
+//   'eleanor',
+//   'general-lee',
+//   'ghostbusters',
+//   'knight-rider',
+//   'mirth-mobile'
+// ];
+
+// function getImgSrc() {
+//   const src = 'https://dummyimage.com/600x400/${Math.round( Math.random() * 99999)}/fff.png';
+//   rotateImg++;
+//   if (rotateImg === images.length) {
+//     rotateImg = 0;
+//   }
+//   return src;
+// }
+
+// let rotateImg = 0;

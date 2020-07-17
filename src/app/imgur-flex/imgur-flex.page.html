@@ -1,26 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Imgur Search</ion-title>
+    <ion-title>Imgur Flex</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-item class="searchbar">
     <ion-label position="floating">Search</ion-label>
     <ion-input (keyup.enter)="goSearch()" [(ngModel)]="query"></ion-input>
   </ion-item>
 
-  <ion-virtual-scroll [items]="items" approxItemHeight="580px">
-    <div class="item-container" *virtualItem="let item; let itemBounds = bounds;">
+  <div class="flex-container" *ngIf="items">
+    <div class="flex-item" *ngFor="let item of items">
       <!-- <div class="imgur-item">
         <div class="imgur-item-header">
           <ion-card-title>{{ item.title }}</ion-card-title>
         </div> -->
         <!-- <ion-img class="imgur-image" [src]="item.linkMedium" [alt]="item.name"></ion-img> -->
+        <ion-img class="flex-img" src="{{item.linkThumbnail}}" alt="{{item.title}}"></ion-img>
         <div class="imgur-item-header">{{item.title}}</div>
-        <img class="fillheight" src="{{item.linkHugeThumbnail}}" alt="{{item.name}}"/>
       <!-- </div> -->
     </div>
-  </ion-virtual-scroll>
+  </div>
 </ion-content>
-
