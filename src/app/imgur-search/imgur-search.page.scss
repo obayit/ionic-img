@@ -29,10 +29,15 @@ ion-img.item-image::part(image) {
     //fill-height
 }
 .item-info {
+    font-size: .75em;
     max-height: 54px;
     // take padding-left and right from default values
     padding-top: 0px;
     padding-bottom: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
 }
 .item-images-count {
     margin-left: 15px;

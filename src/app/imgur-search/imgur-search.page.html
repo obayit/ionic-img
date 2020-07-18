@@ -17,27 +17,19 @@
       <ion-img class="item-image fill-height" src="{{item.linkHugeThumbnail}}" alt="{{item.name}}"
        routerLink="/imgur-image-details/" [queryParams]="{hash: item.id}" [state]="item"></ion-img>
 
-      <ion-grid class="item-info">
-        <ion-row class="ion-justify-content-center ion-align-items-center">
-          <ion-col>
-            <ion-button color="primary">
-              <ion-icon slot="start" name='arrow-up-circle-outline'></ion-icon>
-              {{item.points}} Points
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button color="primary">
-            <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
-              {{item.comment_count}} Comments
-            </ion-button>
-          </ion-col>
-          <ion-col class="item-images-count">
-            <ion-note>
-              {{item.images_count}} {{item.images_count > 1 ? 'Images': 'Image'}}
-            </ion-note>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <div class="item-info">
+        <ion-chip color="primary">
+          <ion-icon slot="start" name='arrow-up-circle-outline'></ion-icon>
+          <ion-label>{{item.points}} Points</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
+          <ion-label>{{item.comment_count}} {{item.comment_count > 1 ? 'Comments' : 'Comments'}}</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-label>{{item.images_count}} {{item.images_count > 1 ? 'Images': 'Image'}}</ion-label>
+        </ion-chip>
+      </div>
     </div>
   </ion-virtual-scroll>
 </ion-content>
