@@ -29,7 +29,6 @@ export class ImgurSearchPage implements OnInit {
         res.push(item);
       }
       this.items = res;
-      console.log(this.items);
     });
   }
 }

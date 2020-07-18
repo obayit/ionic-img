@@ -58,6 +58,7 @@ export interface ImgurSearchResponse{
         thumbnail_hash?: string,
     }
   ],
+  views?: number,
 }
 
 export function generateLinks(item: any){

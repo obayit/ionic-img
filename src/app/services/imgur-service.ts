@@ -35,4 +35,8 @@ export class ImgurService {
     return this.http.get(`https://api.imgur.com/3/galary/album/${hash}`,
      {headers: this.headers});
   }
+  getComments(galleryHash: string, sort = 'best'){
+    return this.http.get(`https://api.imgur.com/3/gallery/${galleryHash}/comments/${sort}`,
+     {headers: this.headers});
+  }
 }

@@ -8,9 +8,9 @@
 
   <!-- <ion-virtual-scroll *ngIf="item.images" [items]="item.images" approxItemHeight="500px"> -->
   <ion-list>
-    <ion-grid>
+    <ion-grid class="images-grid">
       <ion-row *ngFor="let image of item.images">
-        <ion-col>
+        <ion-col class="images-column">
         <div *ngIf="image.type==='video/mp4'">
             <video controls (click)="toggleVideo()" #videoPlayer class="video"
             poster="{{image.linkHugeThumbnail}}">
@@ -31,7 +31,36 @@
       </ion-chip>
     </div>
   </div>
-
-  <p>{{ item.title }}</p>
-
+  <!-- views count -->
+  <ion-item>
+    <ion-note>{{item.views}} views</ion-note>
+    <ion-text>{{ item.title }}</ion-text>
+  </ion-item>
+  <!-- comments -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Sort</ion-label>
+      <ion-select [(ngModel)]="sort">
+        <ion-select-option value="best">Best</ion-select-option>
+        <ion-select-option value="top">Top</ion-select-option>
+        <ion-select-option value="new">New</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item *ngFor="let comment of comments">
+      <ion-text>{{comment.comment}}</ion-text>
+    </ion-item> -->
+    <div *ngIf="comments">
+      <div class="comment-container" *ngFor="let comment of comments">
+        <ion-item class="comment">
+          <ion-text>{{comment.comment}}</ion-text>
+        </ion-item>
+        <ion-item class="comment-info">
+          <ion-chip class="author">{{comment.author}}</ion-chip>
+          <ion-chip class="up">{{comment.ups}} ups</ion-chip>
+          <ion-chip class="down">{{comment.downs}} downs</ion-chip>
+          <ion-chip class="replies">{{comment.children.length}} replies</ion-chip>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
 </ion-content>

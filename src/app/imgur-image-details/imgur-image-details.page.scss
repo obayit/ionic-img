@@ -8,3 +8,27 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+.images-column {
+    padding: 0px;
+}
+
+/*comments grid*/
+.comment-container {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.comment {
+}
+
+.up {
+    // float: right;
+}
+
+.author {
+    align-self: flex-start;
+    color: var(--ion-color-primary)
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ImgurSubredditResponse, ImgurSearchResponse } from '../interfaces';
 import { NONE_TYPE } from '@angular/compiler';
@@ -12,26 +12,25 @@ import { ImgurService } from '../services/imgur-service';
 })
 export class ImgurImageDetailsPage implements OnInit {
   item: ImgurSearchResponse | ImgurSubredditResponse;
+  comments = [];
+  sort = 'best';
 
-  constructor(private route: ActivatedRoute, private photoViewer: PhotoViewer, private imgurService: ImgurService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private photoViewer: PhotoViewer, private imgurService: ImgurService) { }
 
   ngOnInit() {
     this.item = history.state;
-    console.log('this.item');
-    console.log(this.item);
     if(!this.item.id){
-      this.route.queryParamMap.subscribe((params) => {
-        let hash = params.get('hash');
-        if(!hash){
-          return;
-        }
-        this.imgurService.getGalary(hash).subscribe((result: any) => {
-          console.log('getImage()');
-          console.log(result);
-          this.item = result;
-        });
+      // console.log('redirecting to search page');
+      // this.router.navigate(['/imgur-search']);
+    }else{
+      this.imgurService.getComments(this.item.id+'', this.sort).subscribe((result: any) => {
+        console.log('comments are');
+        console.table(result.data);
+        this.comments = result.data;
       });
     }
+    console.log('item');
+    console.log(this.item);
   }
 
   @ViewChild('videoPlayer') videoplayer: ElementRef;
