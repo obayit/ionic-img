@@ -14,17 +14,15 @@
 }
 
 /*comments grid*/
-.comment-container {
+.comment-info {
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  border-bottom: 1px white solid;
 }
 
-.comment {
-}
-
-.up {
+.up-down {
     // float: right;
 }
 
