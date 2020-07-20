@@ -25,6 +25,9 @@ export class ImgurSearchPage implements OnInit {
     this.imgurService.getSearchResult(this.query).subscribe((result: {data: ImgurSearchResponse[]})=>{
       let res: ImgurSearchResponse[] = [];
       for(let item of result.data){
+        if(!item.comment_count){
+          continue;
+        }
         generateLinks(item);
         res.push(item);
       }
