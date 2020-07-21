@@ -28,9 +28,8 @@ export class ImgurService {
     return this.http.get(`http://api.reddit.com/subreddits/popular.json?limit=100&show=all`);
   }
   getSearchResult(query: string, sort='', window='', page=''){
-    return this.http.get('/assets/data/imgur-image-search.json');
-    // return this.http.get(`https://api.imgur.com/3/gallery/search/${sort}/${window}/${page}?q=${query}`,
-    //  {headers: this.headers});
+    return this.http.get(`https://api.imgur.com/3/gallery/search/${sort}/${window}/${page}?q=${query}`,
+     {headers: this.headers});
   }
   getGalary(hash: string){
     return this.http.get(`https://api.imgur.com/3/galary/album/${hash}`,

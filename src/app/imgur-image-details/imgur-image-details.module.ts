@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ImgurImageDetailsPageRoutingModule } from './imgur-image-details-routing.module';
 
 import { ImgurImageDetailsPage } from './imgur-image-details.page';
+import { ImgurCommentComponent } from '../imgur-comment/imgur-comment.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ImgurImageDetailsPageRoutingModule
+    ImgurImageDetailsPageRoutingModule,
+    
   ],
-  declarations: [ImgurImageDetailsPage]
+  declarations: [ImgurImageDetailsPage, ImgurCommentComponent]
 })
 export class ImgurImageDetailsPageModule {}

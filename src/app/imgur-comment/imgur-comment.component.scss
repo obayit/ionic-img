@@ -7,10 +7,15 @@
 }
 
 .up-down {
-    // float: right;
+  // float: right;
 }
 
 .author {
-    align-self: flex-start;
-    color: var(--ion-color-primary)
+  align-self: flex-start;
+  color: var(--ion-color-primary)
+}
+
+.child-comments {
+  margin-left: 10px;
+  border-left: 1px red solid;
 }

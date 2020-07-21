@@ -50,7 +50,7 @@
       <ion-text>{{comment.comment}}</ion-text>
     </ion-item> -->
     <div *ngIf="comments">
-      <imgur-comment *ngFor="let comment of comments">
+      <imgur-comment *ngFor="let comment of comments" [comment]="comment">
       </imgur-comment>
     </div>
 

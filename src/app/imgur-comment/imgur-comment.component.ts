@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ImgurComment } from '../interfaces';
 
 @Component({
@@ -7,17 +7,12 @@ import { ImgurComment } from '../interfaces';
   styleUrls: ['./imgur-comment.component.scss'],
 })
 export class ImgurCommentComponent implements OnInit {
-  comment: ImgurComment;
-  isChild = false;
+  @Input() comment: ImgurComment;
+  @Input() isChild = false;
 
   constructor() { }
 
   ngOnInit() {
-    console.log('Comment Component is Working');
-    let comment = history.state;
-    if(comment.id){
-      this.comment = comment;
-    }
   }
 
 }
