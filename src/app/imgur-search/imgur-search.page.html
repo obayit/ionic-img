@@ -11,7 +11,7 @@
     <ion-input (keyup.enter)="goSearch()" [(ngModel)]="query"></ion-input>
   </ion-item>
 
-  <ion-virtual-scroll [items]="items" approxItemHeight="600px">
+  <ion-virtual-scroll [items]="items" approxItemHeight="596px">
     <div class="item-container" *virtualItem="let item; let itemBounds = bounds;">
       <ion-text color="primary"><p class="item-text" text-wrap>{{item.title}}</p></ion-text>
       <ion-img class="item-image fill-height" src="{{item.linkHugeThumbnail}}" alt="{{item.name}}"

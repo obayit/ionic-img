@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-import { ImgurSubredditResponse, ImgurSearchResponse } from '../interfaces';
+import { ImgurSubredditResponse, ImgurSearchResponse, ImgurComment } from '../interfaces';
 import { NONE_TYPE } from '@angular/compiler';
 import { ImgurService } from '../services/imgur-service';
 
@@ -12,7 +12,7 @@ import { ImgurService } from '../services/imgur-service';
 })
 export class ImgurImageDetailsPage implements OnInit {
   item: ImgurSearchResponse | ImgurSubredditResponse;
-  comments = [];
+  comments: ImgurComment[];
   sort = 'best';
 
   constructor(private route: ActivatedRoute, private router: Router, private photoViewer: PhotoViewer, private imgurService: ImgurService) { }

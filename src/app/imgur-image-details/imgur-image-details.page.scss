@@ -12,21 +12,3 @@
 .images-column {
     padding: 0px;
 }
-
-/*comments grid*/
-.comment-info {
-  padding: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  border-bottom: 1px white solid;
-}
-
-.up-down {
-    // float: right;
-}
-
-.author {
-    align-self: flex-start;
-    color: var(--ion-color-primary)
-}

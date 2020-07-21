@@ -50,26 +50,9 @@
       <ion-text>{{comment.comment}}</ion-text>
     </ion-item> -->
     <div *ngIf="comments">
-      <div *ngFor="let comment of comments">
-
-        <ion-chip outline="true" color="primary">
-          <ion-avatar>
-            <ion-img class="commenter-avatar" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"></ion-img>
-          </ion-avatar>
-          <ion-label class="author-name">{{comment.author}}</ion-label>
-        </ion-chip>
-
-        <ion-item class="comment">
-          <ion-text>{{comment.comment}}</ion-text>
-        </ion-item>
-            
-        <div class="comment-info">
-          <ion-chip class="up-down">{{comment.ups}} ups</ion-chip>
-          <ion-chip class="up-down">{{comment.downs}} downs</ion-chip>
-          <ion-chip class="replies">{{comment.children.length}} replies</ion-chip>
-        </div>
-
-      </div>
+      <imgur-comment *ngFor="let comment of comments">
+      </imgur-comment>
     </div>
+
   </ion-list>
 </ion-content>

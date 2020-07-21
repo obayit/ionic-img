@@ -40,8 +40,4 @@ export class ImgurService {
     return this.http.get(`https://api.imgur.com/3/gallery/${galleryHash}/comments/${sort}`,
      {headers: this.headers});
   }
-  getReplies(commentId: string, sort = 'best'){
-    return this.http.get(`https://api.imgur.com/3/comment/replies/${commentId}/${sort}`,
-     {headers: this.headers});
-  }
 }

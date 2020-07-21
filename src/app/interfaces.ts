@@ -1,5 +1,5 @@
 export interface ImgurSubredditResponse{
-  id?: number;
+  id?: string;
   title?: string,
   link?: string,
   linkSmall?: string, //  s = Small Square (90x90)
@@ -23,7 +23,7 @@ export interface ImgurSubredditResponse{
 }
 
 export interface ImgurSearchResponse{
-  id: number;
+  id: string;
   title: string;
   link: string;
   linkSmall?: string, //  s = Small Square (90x90)
@@ -59,6 +59,15 @@ export interface ImgurSearchResponse{
     }
   ],
   views?: number,
+}
+
+export interface ImgurComment{
+  id: string,
+  comment: string,
+  author: string,
+  children: ImgurComment[],
+  ups: string,
+  downs: string
 }
 
 export function generateLinks(item: any){
