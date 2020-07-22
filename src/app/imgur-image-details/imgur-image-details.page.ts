@@ -20,17 +20,22 @@ export class ImgurImageDetailsPage implements OnInit {
   ngOnInit() {
     this.item = history.state;
     if(!this.item.id){
-      // console.log('redirecting to search page');
-      // this.router.navigate(['/imgur-search']);
+      let hash = this.route.snapshot.queryParamMap.get('hash');
+      if(hash){
+        this.imgurService.getAlbum(hash).subscribe((result: any) => {
+          this.item = result.data;
+          this.getComments();
+        });
+      }
     }else{
+      this.getComments();
+    }
+  }
+
+  getComments(){
       this.imgurService.getComments(this.item.id+'', this.sort).subscribe((result: any) => {
-        console.log('comments are');
-        console.table(result.data);
         this.comments = result.data;
       });
-    }
-    console.log('item');
-    console.log(this.item);
   }
 
   @ViewChild('videoPlayer') videoplayer: ElementRef;

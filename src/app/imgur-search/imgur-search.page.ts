@@ -8,7 +8,7 @@ import { ImgurSearchResponse, generateLinks } from '../interfaces'
   styleUrls: ['./imgur-search.page.scss'],
 })
 export class ImgurSearchPage implements OnInit {
-  query: string = 'cats';
+  query: string = 'free memes';
   items: ImgurSearchResponse[] = [];
   // items: any[] = [];
   constructor(private imgurService: ImgurService) { }

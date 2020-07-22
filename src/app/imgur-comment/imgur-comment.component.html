@@ -17,8 +17,8 @@
       <ion-chip class="replies">{{comment.children.length}} replies</ion-chip>
     </div>
   </div>
-  <div class="child-comments">
-    <div *ngFor="let child of comment.children">
+  <div class="child-comments-container">
+    <div class="child-comments" *ngFor="let child of comment.children">
       <imgur-comment [comment]="child" [isChild]="true"></imgur-comment>
     </div>
   </div>
