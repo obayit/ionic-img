@@ -15,16 +15,11 @@
   color: var(--ion-color-primary);
 }
 
-$background: var(--ion-background-color);
-$darker-background: darken($background, 20% );
 .child-comments-container {
-  // background: var(ion-color-light-tint);
-  background: red;
-  background: $darker-background;
+  background: var(--ion-color-step-100);
 }
 
 .child-comments {
   margin-left: 10px;
-  border-left: 1px var(--ion-color-secondary) solid;
-  background: var(--ion-background-color);
+  background: var(--ion-color-step-50);
 }
