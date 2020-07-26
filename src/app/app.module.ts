@@ -7,6 +7,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     StatusBar,
     SplashScreen,
     PhotoViewer,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LocalNotifications,
   ],
   bootstrap: [AppComponent]
 })

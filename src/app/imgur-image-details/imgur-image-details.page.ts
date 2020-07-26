@@ -4,6 +4,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ImgurSubredditResponse, ImgurSearchResponse, ImgurComment } from '../interfaces';
 import { NONE_TYPE } from '@angular/compiler';
 import { ImgurService } from '../services/imgur-service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-imgur-image-details',
@@ -15,7 +16,12 @@ export class ImgurImageDetailsPage implements OnInit {
   comments: ImgurComment[];
   sort = 'best';
 
-  constructor(private route: ActivatedRoute, private router: Router, private photoViewer: PhotoViewer, private imgurService: ImgurService) { }
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private photoViewer: PhotoViewer,
+    private imgurService: ImgurService,
+    private localNotifications: LocalNotifications
+    ) { }
 
   ngOnInit() {
     this.item = history.state;
@@ -35,6 +41,13 @@ export class ImgurImageDetailsPage implements OnInit {
   getComments(){
       this.imgurService.getComments(this.item.id+'', this.sort).subscribe((result: any) => {
         this.comments = result.data;
+        this.localNotifications.schedule({
+          id: 1,
+          text: `There is ${this.comments.length} comments in this post`,
+          sound: 'file://sound.mp3',
+        });
+        console.log('comments are');
+        console.log(this.comments);
       });
   }
 
