@@ -10,6 +10,14 @@
     <ion-label position="floating">Search</ion-label>
     <ion-input (keyup.enter)="goSearch()" [(ngModel)]="query"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label>Sort</ion-label>
+    <ion-select [(ngModel)]="sort">
+      <ion-select-option value="best">Recent</ion-select-option>
+      <ion-select-option value="top">Viral</ion-select-option>
+      <ion-select-option value="new">Top</ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <ion-virtual-scroll [items]="items" approxItemHeight="596px">
     <div class="item-container" *virtualItem="let item; let itemBounds = bounds;">

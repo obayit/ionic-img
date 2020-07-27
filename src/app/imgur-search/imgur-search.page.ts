@@ -10,6 +10,7 @@ import { ImgurSearchResponse, generateLinks } from '../interfaces'
 export class ImgurSearchPage implements OnInit {
   query: string = 'cats';
   items: ImgurSearchResponse[] = [];
+  sort = 'Viral';
   // items: any[] = [];
   constructor(private imgurService: ImgurService) { }
 
@@ -22,7 +23,7 @@ export class ImgurSearchPage implements OnInit {
     if(!this.query){
       return;
     }
-    this.imgurService.getSearchResult(this.query).subscribe((result: {data: ImgurSearchResponse[]})=>{
+    this.imgurService.getSearchResult(this.query, this.sort.toLowerCase()).subscribe((result: {data: ImgurSearchResponse[]})=>{
       let res: ImgurSearchResponse[] = [];
       for(let item of result.data){
         if(!item.comment_count){

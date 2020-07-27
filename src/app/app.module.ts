@@ -12,14 +12,13 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // dependency for MatVideoModule
-import { MatVideoModule } from 'mat-video';
+// import { MatVideoModule } from 'mat-video';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+  imports: [IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
     BrowserAnimationsModule,
-    MatVideoModule
   ],
   providers: [
     StatusBar,

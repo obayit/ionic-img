@@ -16,8 +16,8 @@ export class ImgurCommentComponent implements OnInit {
 
   ngOnInit() {
     this.checkCommentIsImage();
-    console.log('comment: ', this.comment);
-    console.log(this.commentIsImage)
+    console.log('comment: ', this.comment.comment);
+    console.log(this.commentIsImage, this.commentIsVideo);
   }
 
   checkCommentIsImage(){
