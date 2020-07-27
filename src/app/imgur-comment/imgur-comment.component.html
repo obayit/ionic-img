@@ -7,10 +7,16 @@
       <ion-label class="author-name">{{comment.author}}</ion-label>
     </ion-chip>
 
-    <ion-item class="comment">
+    <ion-item class="comment" *ngIf="!this.commentIsImage">
       <ion-text>{{comment.comment}}</ion-text>
     </ion-item>
-        
+
+    <ion-img class="comment-img" *ngIf="this.commentIsImage" [src]="this.comment.comment">
+    </ion-img>
+
+    <mat-video *ngIf="commentIsVideo" src="comment.comment"></mat-video>
+
+
     <div class="comment-info">
       <ion-chip class="up-down">{{comment.ups}} ups</ion-chip>
       <ion-chip class="up-down">{{comment.downs}} downs</ion-chip>
