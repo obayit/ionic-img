@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>map-page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let location of locationService.locations">
+      <ion-text>long: {{location.position.longitude}}, lat: {{location.position.latitude}}</ion-text>
+      <ion-item>
+        <ion-text>{{location.datetime.toDate()}}</ion-text>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -12,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'imgur-search',
+    redirectTo: 'login-page',
+    // redirectTo: 'imgur-search',
     pathMatch: 'full'
   },
   {
@@ -34,6 +35,18 @@ const routes: Routes = [
   {
     path: 'imgur-flex',
     loadChildren: () => import('./imgur-flex/imgur-flex.module').then( m => m.ImgurFlexPageModule)
+  },
+  {
+    path: 'login-page',
+    loadChildren: () => import('./firebase/login-page/login-page.module').then( m => m.LoginPagePageModule)
+  },
+  {
+    path: 'register-page',
+    loadChildren: () => import('./firebase/register-page/register-page.module').then( m => m.RegisterPagePageModule)
+  },
+  {
+    path: 'map-page',
+    loadChildren: () => import('./firebase/map-page/map-page.module').then( m => m.MapPagePageModule)
   },
 ];
 

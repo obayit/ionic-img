@@ -12,6 +12,11 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // dependency for MatVideoModule
+
+import firebaseConfig from './single-files/firebase.config'
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
 // import { MatVideoModule } from 'mat-video';
 
 @NgModule({
@@ -19,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
   entryComponents: [],
   imports: [IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
   ],
   providers: [
     StatusBar,
@@ -26,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
     PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LocalNotifications,
+    BackgroundGeolocation,
   ],
   bootstrap: [AppComponent]
 })
