@@ -8,7 +8,7 @@ import { ImgurService } from '../services/imgur-service';
   styleUrls: ['./imgur-flex.page.scss'],
 })
 export class ImgurFlexPage implements OnInit {
-  query: string = 'cats';
+  query: string = 'funny';
   items: ImgurSearchResponse[] = [];
 
   constructor(private imgurService: ImgurService) { }

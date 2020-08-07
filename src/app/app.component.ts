@@ -27,6 +27,16 @@ export class AppComponent {
       url: '/imgur-flex',
       icon: 'apps-outline'
     },
+    {
+      title: 'Firestore Login',
+      url: '/login-page',
+      icon: 'enter-outline'
+    },
+    {
+      title: 'Map Page',
+      url: '/map-page',
+      icon: 'map-outline'
+    },
   ]
   constructor(
     private platform: Platform,
@@ -41,7 +51,6 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.locationService.startService();
     });
   }
   ngOnInit(){

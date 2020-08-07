@@ -11,8 +11,9 @@ const routes: Routes = [
     loadChildren: () => import('./imgur/imgur.module').then( m => m.ImgurPageModule)
   },
   {
+    // home
     path: '',
-    redirectTo: 'login-page',
+    redirectTo: 'map-page',
     // redirectTo: 'imgur-search',
     pathMatch: 'full'
   },

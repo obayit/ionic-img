@@ -1,72 +1,81 @@
 export interface ImgurSubredditResponse{
   id?: string;
-  title?: string,
-  link?: string,
-  linkSmall?: string, //  s = Small Square (90x90)
-  linkBig?: string, // b = Big Square (160x160)
-  linkThumbnail?: string, // t = Small Thumbnail (160x160)
-  linkMedium?: string, // m = Medium Thumbnail (320x320)
-  linkLarge?: string, // l = Large Thumbnail (640x640)
-  linkHugeThumbnail?: string, // h = Huge Thumbnail (1024x1024)
-  is_album?: boolean,
-  type?: string,
+  title?: string;
+  link?: string;
+  linkSmall?: string; //  s = Small Square (90x90)
+  linkBig?: string; // b = Big Square (160x160)
+  linkThumbnail?: string; // t = Small Thumbnail (160x160)
+  linkMedium?: string; // m = Medium Thumbnail (320x320)
+  linkLarge?: string; // l = Large Thumbnail (640x640)
+  linkHugeThumbnail?: string; // h = Huge Thumbnail (1024x1024)
+  is_album?: boolean;
+  type?: string;
   images?: [{
     link?: string;
-    linkSmall?: string, //  s = Small Square (90x90)
-    linkBig?: string, // b = Big Square (160x160)
-    linkThumbnail?: string, // t = Small Thumbnail (160x160)
-    linkMedium?: string, // m = Medium Thumbnail (320x320)
-    linkLarge?: string, // l = Large Thumbnail (640x640)
-    linkHugeThumbnail?: string, // h = Huge Thumbnail (1024x1024)
-    type?: string,
-  }]
+    linkSmall?: string; //  s = Small Square (90x90)
+    linkBig?: string; // b = Big Square (160x160)
+    linkThumbnail?: string; // t = Small Thumbnail (160x160)
+    linkMedium?: string; // m = Medium Thumbnail (320x320)
+    linkLarge?: string; // l = Large Thumbnail (640x640)
+    linkHugeThumbnail?: string; // h = Huge Thumbnail (1024x1024)
+    type?: string;
+  }];
+  tags?: [
+    {
+        name?: string;
+        display_name?: string;
+        background_hash?: string;
+        thumbnail_hash?: string;
+    }
+  ];
 }
 
 export interface ImgurSearchResponse{
   id: string;
   title: string;
   link: string;
-  linkSmall?: string, //  s = Small Square (90x90)
-  linkBig?: string, // b = Big Square (160x160)
-  linkThumbnail?: string, // t = Small Thumbnail (160x160)
-  linkMedium?: string, // m = Medium Thumbnail (320x320)
-  linkLarge?: string, // l = Large Thumbnail (640x640)
-  linkHugeThumbnail?: string, // h = Huge Thumbnail (1024x1024)
-  is_album?: boolean,
+  linkSmall?: string; //  s = Small Square (90x90)
+  linkBig?: string; // b = Big Square (160x160)
+  linkThumbnail?: string; // t = Small Thumbnail (160x160)
+  linkMedium?: string; // m = Medium Thumbnail (320x320)
+  linkLarge?: string; // l = Large Thumbnail (640x640)
+  linkHugeThumbnail?: string; // h = Huge Thumbnail (1024x1024)
+  is_album?: boolean;
   height?: number;
   cover?: string;
+  type?: string;
   images?: [{
     link?: string;
-    linkSmall?: string, //  s = Small Square (90x90)
-    linkBig?: string, // b = Big Square (160x160)
-    linkThumbnail?: string, // t = Small Thumbnail (160x160)
-    linkMedium?: string, // m = Medium Thumbnail (320x320)
-    linkLarge?: string, // l = Large Thumbnail (640x640)
-    linkHugeThumbnail?: string, // h = Huge Thumbnail (1024x1024)
-    type?: string,
-  }]
-  ups?: number,
-  comment_count?: number,
-  datetime?: number,
-  points?: number,
-  images_count?: number,
+    linkSmall?: string; //  s = Small Square (90x90)
+    linkBig?: string; // b = Big Square (160x160)
+    linkThumbnail?: string; // t = Small Thumbnail (160x160)
+    linkMedium?: string; // m = Medium Thumbnail (320x320)
+    linkLarge?: string; // l = Large Thumbnail (640x640)
+    linkHugeThumbnail?: string; // h = Huge Thumbnail (1024x1024)
+    type?: string;
+  }];
+  ups?: number;
+  comment_count?: number;
+  datetime?: number;
+  points?: number;
+  images_count?: number;
   tags?: [
     {
-        name?: string,
-        display_name?: string,
-        background_hash?: string,
-        thumbnail_hash?: string,
+        name?: string;
+        display_name?: string;
+        background_hash?: string;
+        thumbnail_hash?: string;
     }
-  ],
-  views?: number,
+  ];
+  views?: number;
 }
 
 export interface ImgurComment{
-  id: string,
-  comment: string,
-  author: string,
-  children: ImgurComment[],
-  ups: string,
+  id: string;
+  comment: string;
+  author: string;
+  children: ImgurComment[];
+  ups: string;
   downs: string
 }
 

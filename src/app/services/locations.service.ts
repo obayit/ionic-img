@@ -16,7 +16,7 @@ export interface Location{
   providedIn: 'root'
 })
 export class LocationsService {
-  public locations = [];
+  public locations: Location[] = [];
   constructor(private backgroundGeolocation: BackgroundGeolocation,
     public afStore: AngularFirestore,
     private localNotifications: LocalNotifications,
@@ -50,7 +50,7 @@ export class LocationsService {
               // text: `${tmp.position.longitude}, ${locationDocument}, ${locationDocument.get()._isScalar}`,
               sound: 'file://sound.mp3',
             });
-            this.backgroundGeolocation.finish(); // FOR IOS ONLY
+            // this.backgroundGeolocation.finish(); // FOR IOS ONLY
 
           }).catch((err) => {
             this.localNotifications.schedule({
@@ -69,10 +69,7 @@ export class LocationsService {
   }
   addTestLocation(long, lat){
     this.locations.push({
-      position: {
-        longitude: long,
-        latitude: lat,
-      },
+      position: new firebase.firestore.GeoPoint(lat, long),
       battery: 0,
       datetime: firebase.firestore.Timestamp.now(),
     });
@@ -84,5 +81,8 @@ export class LocationsService {
   stopService(){
     // If you wish to turn OFF background-tracking, call the #stop method.
     this.backgroundGeolocation.stop();
+  }
+  getSavedLocations(){
+    return this.afStore.collection<Location>(`/location`).get();
   }
 }

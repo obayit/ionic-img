@@ -33,10 +33,6 @@ export class LoginPagePage implements OnInit {
     }
 
   ngOnInit() {
-    this.httpClient.get('https://a.4cdn.org/po/catalog.json').subscribe((result) => {
-      console.log('cors result');
-      console.log(result);
-    });
   }
   async login(){
     try{
