@@ -25,17 +25,17 @@ export class AppComponent {
     {
       title: 'Imgur Flex',
       url: '/imgur-flex',
-      icon: 'apps-outline'
+      icon: 'apps'
     },
     {
       title: 'Firestore Login',
       url: '/login-page',
-      icon: 'enter-outline'
+      icon: 'enter'
     },
     {
       title: 'Map Page',
       url: '/map-page',
-      icon: 'map-outline'
+      icon: 'map'
     },
   ]
   constructor(
